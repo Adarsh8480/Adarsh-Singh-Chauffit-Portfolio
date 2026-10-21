@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101713">
+<title>Adarsh Kumar Singh — Founder's Office Portfolio</title>
+<style>
+:root {
+  --site-primary: #850d19;
+  --site-secondary: #1d1b1b;
+  --site-background: #141313;
+  --site-on-primary: #fff8f1;
+  --site-on-secondary: #eee5dc;
+  --site-on-background: #eee5dc;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Georgia, "Times New Roman", serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--site-primary); outline-offset: 4px; }
+.wrap { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+.nav { display:flex; align-items:center; justify-content:space-between; padding: 22px 0; border-bottom:1px solid #ffffff19; }
+.brand { display:flex; align-items:center; gap:11px; font-weight:800; letter-spacing:-.04em; }
+.brand-mark { display:grid; place-items:center; width:36px; height:36px; border-radius:50%; color:var(--site-on-primary); background:var(--site-primary); font-weight:900; }
+.brand small { display:block; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#b2a49a; font-weight:600; margin-top:3px; }
+.navlinks { display:flex; align-items:center; gap:27px; color:#d4dbd2; font-size:13px; }
+.navlinks a:hover { color:var(--site-primary); }
+.nav-cta,.btn-primary { display:inline-flex; justify-content:center; align-items:center; gap:9px; background:var(--site-primary); color:var(--site-on-primary); border:1px solid #a83b42; border-radius:10px; padding:13px 19px; font-size:13px; font-weight:800; cursor:pointer; transition:transform .2s, background .2s; }
+.nav-cta:hover,.btn-primary:hover { transform:translateY(-2px); background:#a31624; }
+.hero { padding:84px 0 70px; display:grid; grid-template-columns:1.08fr .92fr; align-items:center; gap:58px; position:relative; }
+.eyebrow { display:inline-flex; align-items:center; gap:9px; text-transform:uppercase; font-size:11px; font-weight:800; letter-spacing:.17em; color:#c99868; }
+.eyebrow:before { content:""; display:block; width:24px; height:1px; background:var(--site-primary); }
+h1,h2,h3,p { margin-top:0; }
+h1 { font-family:var(--site-font-heading); font-size:clamp(44px,6.5vw,76px); line-height:1.02; letter-spacing:-.045em; margin:22px 0 24px; font-weight:500; }
+h1 span { color:#d5a16f; font-style:italic; }
+.hero-copy { color:#bac5bb; font-size:16px; line-height:1.8; max-width:590px; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+.btn-secondary { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:12px 18px; border:1px solid #ffffff38; border-radius:999px; font-size:13px; font-weight:700; }
+.btn-secondary:hover { border-color:var(--site-primary); color:var(--site-primary); }
+.hero-meta { display:flex; gap:22px; flex-wrap:wrap; margin-top:34px; color:#aab7ac; font-size:12px; }
+.hero-meta span { display:flex; align-items:center; gap:8px; }
+.dot { width:6px; height:6px; border-radius:50%; background:var(--site-primary); }
+.profile-panel { position:relative; min-height:430px; background:var(--site-secondary); border:1px solid #ffffff12; border-radius:calc(28px * var(--site-radius-scale)); padding:28px; overflow:hidden; }
+.profile-panel:before { content:""; position:absolute; width:300px; height:300px; border-radius:50%; background:var(--site-primary); opacity:.12; filter:blur(2px); right:-100px; top:-100px; }
+.profile-top { display:flex; align-items:center; justify-content:space-between; position:relative; }
+.profile-label { font-size:10px; color:#aab7ac; text-transform:uppercase; letter-spacing:.15em; }
+.availability { border:1px solid #c9f36a55; color:var(--site-primary); padding:7px 10px; border-radius:99px; font-size:10px; }
+.avatar { position:relative; margin:44px auto 23px; width:130px; height:130px; border-radius:50%; border:1px solid #c9986877; background:#30231f; display:grid; place-items:center; color:#d5a16f; font-size:43px; letter-spacing:-.08em; font-weight:800; box-shadow:0 0 0 12px #c9986810; }
+.profile-panel h2 { text-align:center; font-size:25px; letter-spacing:-.04em; margin-bottom:8px; }
+.profile-panel .role { text-align:center; color:#aebbb0; font-size:13px; margin-bottom:26px; }
+.profile-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; position:relative; }
+.stat { background:#ffffff08; border:1px solid #ffffff0d; padding:14px 10px; border-radius:13px; text-align:center; }
+.stat strong { display:block; font-size:19px; color:var(--site-primary); letter-spacing:-.05em; }
+.stat span { display:block; margin-top:4px; color:#aebbb0; font-size:10px; }
+.panel-foot { display:flex; align-items:center; justify-content:space-between; margin-top:20px; padding-top:18px; border-top:1px solid #ffffff17; font-size:11px; color:#aebbb0; }
+.panel-foot b { color:#f5f4eb; font-weight:600; }
+.ticker { background:#7d0d18; color:#fff3e8; overflow:hidden; padding:15px 0; }
+.ticker-track { display:flex; justify-content:space-around; align-items:center; gap:32px; white-space:nowrap; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.14em; }
+.ticker-track span { display:flex; align-items:center; gap:12px; }
+.ticker-track i { font-style:normal; font-size:18px; }
+section { padding:88px 0; }
+.section-head { display:flex; align-items:end; justify-content:space-between; gap:28px; margin-bottom:36px; }
+.kicker { color:var(--site-primary); text-transform:uppercase; font-size:10px; letter-spacing:.17em; font-weight:900; margin-bottom:14px; }
+h2.section-title { font-size:clamp(31px,4.3vw,48px); line-height:1.05; letter-spacing:-.06em; margin-bottom:0; max-width:680px; }
+.section-intro { color:#aebbb0; max-width:380px; line-height:1.7; font-size:13px; margin-bottom:2px; }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.about-card { background:var(--site-secondary); border:1px solid #ffffff12; border-radius:calc(20px * var(--site-radius-scale)); padding:27px; }
+.about-card .number { color:var(--site-primary); font-size:12px; letter-spacing:.12em; font-weight:800; }
+.about-card h3 { font-size:22px; letter-spacing:-.04em; margin:24px 0 12px; }
+.about-card p { color:#b5c0b6; font-size:13px; line-height:1.8; margin-bottom:0; }
+.values { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px; }
+.value { border-top:1px solid #ffffff30; padding:17px 3px 0; }
+.value strong { display:block; font-size:13px; margin-bottom:7px; }
+.value span { color:#aebbb0; font-size:11px; line-height:1.6; }
+.experience { background:#201d1c; color:#eee5dc; }
+.experience .kicker { color:#d5a16f; }
+.experience .section-intro { color:#b8aaa0; }
+.timeline { display:grid; grid-template-columns:180px 1fr; gap:28px; padding:27px 0; border-top:1px solid #18221c2b; }
+.timeline:last-child { border-bottom:1px solid #18221c2b; }
+.time-date { font-size:11px; color:#b8aaa0; line-height:1.6; }
+.time-content h3 { font-size:22px; letter-spacing:-.04em; margin:0 0 5px; }
+.company { font-size:12px; color:#d5a16f; font-weight:800; margin-bottom:13px; }
+.time-content ul { padding-left:18px; margin:0; color:#d0c5bd; font-size:13px; line-height:1.8; }
+.project-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.project { background:var(--site-secondary); border:1px solid #ffffff14; border-radius:calc(20px * var(--site-radius-scale)); padding:26px; min-height:255px; display:flex; flex-direction:column; }
+.project-top { display:flex; justify-content:space-between; align-items:center; }
+.project-icon { width:42px; height:42px; border-radius:13px; display:grid; place-items:center; background:#850d192e; color:#d5a16f; font-size:21px; }
+.project-type { font-size:10px; text-transform:uppercase; letter-spacing:.12em; color:#aebbb0; }
+.project h3 { font-size:24px; letter-spacing:-.05em; margin:24px 0 10px; }
+.project p { color:#b5c0b6; font-size:13px; line-height:1.8; margin-bottom:20px; }
+.tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; }
+.tags span { padding:6px 9px; border:1px solid #ffffff1e; border-radius:99px; color:#d5ded4; font-size:10px; }
+.skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.skill-card { padding:23px; border:1px solid #ffffff1a; border-radius:calc(17px * var(--site-radius-scale)); }
+.skill-card h3 { font-size:15px; margin:0 0 14px; }
+.skill-card p { color:#aebbb0; font-size:12px; line-height:1.9; margin:0; }
+.callout { background:#850d19; color:#fff4eb; padding:48px; border-radius:calc(12px * var(--site-radius-scale)); display:flex; align-items:center; justify-content:space-between; gap:30px; }
+.callout .kicker { color:#e2b17f; }
+.callout h2 { font-size:clamp(30px,4vw,45px); line-height:1.04; letter-spacing:-.06em; margin:0; max-width:620px; }
+.callout p { color:#f0d8d1; font-size:13px; line-height:1.7; max-width:530px; margin:14px 0 0; }
+.callout .btn-dark { flex-shrink:0; background:#211b1a; color:#f5f4eb; border-radius:10px; padding:15px 20px; font-size:12px; font-weight:800; }
+.callout .btn-dark:hover { background:#352827; }
+footer { padding:28px 0; }
+.footer-inner { display:flex; justify-content:space-between; gap:18px; align-items:center; color:#9eaca0; font-size:11px; }
+.footer-links { display:flex; gap:17px; }
+.footer-links a:hover { color:var(--site-primary); }
+.contact-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.contact-link { display:inline-flex; align-items:center; gap:9px; padding:12px 15px; border:1px solid #ffffff38; border-radius:10px; color:#fff4eb; font-size:13px; overflow-wrap:anywhere; }
+.contact-link:hover { border-color:#d5a16f; color:#f2c391; }
+@media (max-width:800px) { .hero { grid-template-columns:1fr; gap:35px; padding-top:60px; } .profile-panel { min-height:390px; } .section-head { align-items:start; flex-direction:column; } .values { grid-template-columns:repeat(2,1fr); row-gap:20px; } .skills-grid { grid-template-columns:repeat(2,1fr); } .callout { align-items:flex-start; flex-direction:column; padding:32px; } }
+@media (max-width:560px) { .wrap { width:calc(100% - 32px); } .navlinks { display:none; } .nav { padding:17px 0; } .nav-cta { padding:10px 13px; font-size:11px; } .hero { padding:48px 0 45px; } h1 { font-size:48px; } section { padding:62px 0; } .about-grid,.project-grid,.skills-grid { grid-template-columns:1fr; } .timeline { grid-template-columns:1fr; gap:8px; } .values { grid-template-columns:1fr 1fr; } .ticker-track { justify-content:flex-start; width:max-content; animation:marquee 22s linear infinite; } .ticker-track span { margin-right:20px; } .footer-inner { align-items:flex-start; flex-direction:column; } }
+@keyframes marquee { to { transform:translateX(-25%); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="wrap nav">
+    <a class="brand" href="#home" aria-label="Adarsh home"><span class="brand-mark">A.</span><span>ADARSH KUMAR SINGH<small>Strategy · Research · Execution</small></span></a>
+    <nav class="navlinks" aria-label="Main navigation"><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Selected work</a><a href="#skills">Capabilities</a></nav>
+    <a class="nav-cta" href="#contact">Let's connect <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Founder's Office · Business & Growth</div>
+        <h1>Turning research<br>into <span>real action.</span></h1>
+        <p class="hero-copy">I’m Adarsh, a computer science graduate with experience in business analysis, research, data validation, and cross-functional coordination. I enjoy bringing structure to ambiguous problems and turning information into clear next steps.</p>
+        <div class="actions"><a class="btn-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="btn-secondary" href="https://www.linkedin.com/in/adarsh-kumar-singh-92b392224" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+        <div class="hero-meta"><span><i class="dot"></i> Based in Gurgaon, India</span><span><i class="dot"></i> Research-minded · Execution-focused</span></div>
+      </div>
+      <aside class="profile-panel" aria-label="Profile snapshot">
+        <div class="profile-top"><span class="profile-label">Candidate snapshot / 001</span><span class="availability">Open to opportunities</span></div>
+        <div class="avatar" aria-hidden="true">AS</div>
+        <h2>Adarsh Kumar Singh</h2>
+        <p class="role">Business Analysis · Market Research · Operations</p>
+        <div class="profile-stats"><div class="stat"><strong>01</strong><span>Research mindset</span></div><div class="stat"><strong>02</strong><span>Structured analysis</span></div><div class="stat"><strong>03</strong><span>Follow-through</span></div></div>
+        <div class="panel-foot"><span>My working principle</span><b>Understand → Validate → Execute</b></div>
+      </aside>
+    </section>
+    <div class="ticker" aria-label="Core strengths"><div class="ticker-track"><span><i>✳</i> Market research</span><span><i>✳</i> Competitive analysis</span><span><i>✳</i> Data validation</span><span><i>✳</i> Growth strategy</span><span><i>✳</i> Project coordination</span><span><i>✳</i> Market research</span><span><i>✳</i> Competitive analysis</span></div></div>
+    <section class="wrap" id="about">
+      <div class="section-head"><div><div class="kicker">01 / A little about me</div><h2 class="section-title">Curious by nature.<br>Structured by practice.</h2></div><p class="section-intro">I combine a technical foundation with business-focused thinking to research questions, validate information, and help teams move from ideas to action.</p></div>
+      <div class="about-grid">
+        <article class="about-card"><div class="number">01 — HOW I THINK</div><h3>Start with the right question.</h3><p>I break broad problems into clear questions, gather relevant information, check the details, and communicate findings in a format that supports decisions.</p></article>
+        <article class="about-card"><div class="number">02 — HOW I WORK</div><h3>Own the follow-through.</h3><p>I value accurate documentation, dependable coordination, and visible progress. I’m comfortable learning quickly, managing multiple priorities, and working with changing requirements.</p></article>
+      </div>
+      <div class="values"><div class="value"><strong>Research first</strong><span>Find relevant sources and separate signal from noise.</span></div><div class="value"><strong>Data with context</strong><span>Validate details before drawing conclusions.</span></div><div class="value"><strong>Clear communication</strong><span>Present findings in a concise, useful format.</span></div><div class="value"><strong>Bias to action</strong><span>Translate next steps into tracked execution.</span></div></div>
+    </section>
+    <section class="experience" id="experience">
+      <div class="wrap"><div class="section-head"><div><div class="kicker">02 / Experience</div><h2 class="section-title">A foundation in analysis<br>and coordination.</h2></div><p class="section-intro">Practical experience working with information, requirements, records, and stakeholders.</p></div>
+        <article class="timeline"><div class="time-date">Aug 2026 — Oct 2026<br>Gurgaon, India</div><div class="time-content"><h3>Trainee US IT Recruiter</h3><div class="company">Zodiac Solutions</div><ul><li>Researched profiles and evaluated information against defined requirements.</li><li>Analyzed and validated data to identify relevant information and discrepancies.</li><li>Maintained accurate records, prepared structured updates, and coordinated stakeholder follow-ups.</li></ul></div></article>
+        <article class="timeline"><div class="time-date">Oct 2025 — Jan 2026<br>Noida, India</div><div class="time-content"><h3>Business Analyst Trainee</h3><div class="company">Infera</div><ul><li>Gathered, analyzed, and documented business requirements through stakeholder communication.</li><li>Collected, organized, and validated project data using MS Excel and MS Office.</li><li>Tracked milestones and tasks, clarified requirements, and communicated progress to cross-functional teams.</li></ul></div></article>
+        <article class="timeline"><div class="time-date">Oct 2021 — Jul 2025<br>Prayagraj, India</div><div class="time-content"><h3>B.Tech, Computer Science & Engineering</h3><div class="company">United College of Engineering and Research</div><ul><li>Built a technical foundation in software systems, structured problem-solving, and data-oriented thinking.</li></ul></div></article>
+      </div>
+    </section>
+    <section class="wrap" id="work">
+      <div class="section-head"><div><div class="kicker">03 / Selected work</div><h2 class="section-title">Projects that taught me<br>to think in systems.</h2></div><p class="section-intro">A mix of application projects and practical problem-solving, with an emphasis on requirements, reliability, and clear documentation.</p></div>
+      <div class="project-grid">
+        <article class="project"><div class="project-top"><div class="project-icon">↗</div><span class="project-type">Web application</span></div><h3>BloodLink</h3><p>A web-based blood donation management application. Project work included requirements analysis, data validation, documentation, and testing to support a clearer and more reliable user experience.</p><div class="tags"><span>Requirements</span><span>Data validation</span><span>Testing</span><span>Documentation</span></div></article>
+        <article class="project"><div class="project-top"><div class="project-icon">◎</div><span class="project-type">Software system</span></div><h3>Face Attendance System</h3><p>An attendance system with anti-spoofing. Focused on requirements analysis, software testing, issue tracking, and documentation to help improve system accuracy and reliability.</p><div class="tags"><span>Analysis</span><span>Quality checks</span><span>Issue tracking</span><span>Reliability</span></div></article>
+      </div>
+    </section>
+    <section class="wrap" id="skills">
+      <div class="section-head"><div><div class="kicker">04 / Capabilities</div><h2 class="section-title">A practical toolkit<br>for early-stage teams.</h2></div><p class="section-intro">I’m interested in work where research, business judgment, and operational execution meet.</p></div>
+      <div class="skills-grid">
+        <article class="skill-card"><h3>Research & insights</h3><p>Market research · Competitive analysis · Information research · Customer insights · Opportunity analysis</p></article>
+        <article class="skill-card"><h3>Business analysis</h3><p>Requirement analysis · Data interpretation · Problem solving · Documentation · Structured findings</p></article>
+        <article class="skill-card"><h3>Tools & communication</h3><p>MS Excel · PowerPoint · Google Sheets · Google Slides · MS Word · Stakeholder communication</p></article>
+        <article class="skill-card"><h3>Project coordination</h3><p>Project tracking · Milestone monitoring · Cross-functional coordination · Follow-ups · Progress updates</p></article>
+        <article class="skill-card"><h3>Technical foundation</h3><p>Computer Science · Java · Python · SQL · MySQL · Web application fundamentals</p></article>
+        <article class="skill-card"><h3>How I show up</h3><p>Ownership · Analytical thinking · Adaptability · Attention to detail · Critical thinking · Time management</p></article>
+      </div>
+    </section>
+    <section class="wrap" id="contact">
+      <div class="callout"><div><div class="kicker">05 / Let’s build something useful</div><h2>Have a problem worth researching?</h2><p>I’d welcome a conversation about the Founder's Office, market research, business analysis, or growth and operations opportunities at Chauffit.</p><div class="contact-links"><a class="contact-link" href="mailto:adarshkumarsingh8480@gmail.com">✉ Email: adarshkumarsingh8480@gmail.com</a><a class="contact-link" href="tel:+919794048480">☎ Phone: 9794048480</a><a class="contact-link" href="https://www.linkedin.com/in/adarsh-kumar-singh-92b392224" target="_blank" rel="noreferrer">in LinkedIn profile ↗</a></div></div><a class="btn-dark" href="mailto:adarshkumarsingh8480@gmail.com?subject=Founder's%20Office%20Portfolio%20-%20Adarsh">Email Adarsh ↗</a></div>
+    </section>
+  </main>
+  <footer class="wrap"><div class="footer-inner"><span>© 2026 Adarsh Kumar Singh · Built with curiosity and intent.</span><div class="footer-links"><a href="mailto:adarshkumarsingh8480@gmail.com">Email</a><a href="https://www.linkedin.com/in/adarsh-kumar-singh-92b392224" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://chauffit.in/" target="_blank" rel="noreferrer">Chauffit ↗</a><a href="#home">Back to top ↑</a></div></div></footer>
+</div>
+</body>
+</html>
